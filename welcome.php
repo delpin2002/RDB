@@ -239,7 +239,6 @@ $sql_update->execute();
                                 <p>NPP: <?php echo $_SESSION['npp']; ?></p>
                                 <p>Job Code: <?php echo $_SESSION['kode_job']; ?></p>
                                 <p>Email: <?php echo $_SESSION['email']; ?></p>
-                                <img src="assets\image\BNI.png" alt="BNI" style="width:150px;height:50px;">
                             </div>
                         </div>
                 </main>
