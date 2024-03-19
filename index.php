@@ -71,6 +71,17 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
+
+        <style> 
+                body {
+                background-image: url('assets/image/BGBNI.jpg');
+                background-size: cover; 
+                background-repeat: no-repeat; 
+                background-attachment: fixed; 
+                background-size: cover;
+                background-position: center;
+                }
+        </style>
     
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -106,7 +117,7 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
                 </main>
             </div>
             <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Your Website 2023</div>
