@@ -157,7 +157,7 @@ $sql_update->execute();
                                         </tfoot>
                                         <tbody>';
 
-                                // Loop untuk menampilkan data dalam tabel
+                                // Insert data ke tabel
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo '<tr>
                                             <td>' . $row["CODE_LEADS"] . '</td>
@@ -200,17 +200,72 @@ $sql_update->execute();
                                 <h5 class="modal-title" id="modalLabel">Default Modal</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <!-- <div class="modal-body">
+                                <?php
+                                    date_default_timezone_set('Asia/Jakarta');
+                                    $today = date('d/m/Y');
+
+                                    echo '
+                                    Tanggal Follow Up: ' . $today . '<br>
+                                    Jenis Follow Up: <br>
+                                    Hasil Follow Up: <br>
+                                    Closing: <br>
+                                    Resume: <br>
+                                    Produk Closing: <br>
+                                    ';
+                                ?>
+                            </div> -->
+                            
                             <div class="modal-body">
-                                Tanggal Follow Up: <br>
-                                Jenis Follow Up: <br>
-                                Hasil Follow Up: <br>
-                                Closing: <br>
-                                Resume: <br>
-                                Produk Closing: <br>
+                            <?php
+                                date_default_timezone_set('Asia/Jakarta');
+                                $today = date('d/m/Y');
+                            ?>
+
+                            <div class="form-group">
+                                <label>Tanggal Follow Up:</label>
+                                <input type="text" class="form-control" value="<?php echo $today; ?>" readonly>
                             </div>
+                            <div class="form-group">
+                                <label>Jenis Follow Up:</label>
+                                <div>
+                                    <input type="checkbox" id="followUpCall" name="jenisFollowUp" value="1"> Call
+                                    <input type="checkbox" id="followUpVisit" name="jenisFollowUp" value="2"> Visit
+                                    <input type="checkbox" id="followUpPresentation" name="jenisFollowUp" value="3"> Presentasi
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Hasil Follow Up:</label>
+                                <div>
+                                    <input type="checkbox" id="hasilFollowUpInterested" name="hasilFollowUp" value="1" disabled> Tertarik
+                                    <input type="checkbox" id="hasilFollowUpNotInterested" name="hasilFollowUp" value="2" disabled> Tidak Tertarik
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Closing:</label>
+                                <div>
+                                    <input type="checkbox" id="closingYes" name="closing" value="1" disabled> Ya
+                                    <input type="checkbox" id="closingNo" name="closing" value="2" disabled> Tidak
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Resume:</label>
+                                <textarea id="resume" class="form-control" disabled></textarea>
+                            </div>
+                            <div id="produkClosingContainer" class="form-group" style="display: none;">
+                                <label>Produk Closing:</label>
+                                <div id="produkClosingFields">
+                                    <!-- Dynamic fields will be appended here -->
+                                </div>
+                                <button type="button" id="addProdukClosingField" class="btn btn-primary">+</button>
+                            </div>
+                        </div>
+
+
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <a href="process_modal.php" class="btn btn-primary">Save Changes</a>
                             </div>
                             </div>
                         </div>
@@ -236,5 +291,82 @@ $sql_update->execute();
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+
+        <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var jenisFollowUpCheckboxes = document.querySelectorAll('input[name="jenisFollowUp"]');
+            var hasilFollowUpCheckboxes = document.querySelectorAll('input[name="hasilFollowUp"]');
+            var closingCheckboxes = document.querySelectorAll('input[name="closing"]');
+            var resume = document.getElementById('resume');
+            var produkClosingContainer = document.getElementById('produkClosingContainer');
+            var addProdukClosingField = document.getElementById('addProdukClosingField');
+
+            jenisFollowUpCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function () {
+                    var anyChecked = Array.from(jenisFollowUpCheckboxes).some(c => c.checked);
+                    hasilFollowUpCheckboxes.forEach(function(hasilCheckbox) {
+                        hasilCheckbox.disabled = !anyChecked;
+                        hasilCheckbox.checked = false; // Reset on change
+                    });
+                    closingCheckboxes.forEach(function(closingCheckbox) {
+                        closingCheckbox.checked = false; // Reset on change
+                    });
+                    resume.disabled = true;
+                    produkClosingContainer.style.display = 'none';
+                });
+            });
+
+            document.getElementById('hasilFollowUpNotInterested').addEventListener('change', function () {
+                if (this.checked) {
+                    document.getElementById('closingNo').checked = true;
+                    resume.disabled = false;
+                }
+            });
+
+            hasilFollowUpCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function () {
+                    var isInterested = document.getElementById('hasilFollowUpInterested').checked;
+                    resume.disabled = false;
+                    closingCheckboxes.forEach(function(closingCheckbox) {
+                        closingCheckbox.disabled = !isInterested;
+                    });
+                    if (!isInterested) {
+                        produkClosingContainer.style.display = 'none';
+                    }
+                });
+            });
+
+            closingCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function () {
+                    var isClosingYes = document.getElementById('closingYes').checked;
+                    if (isClosingYes) {
+                        produkClosingContainer.style.display = 'block';
+                    } else {
+                        produkClosingContainer.style.display = 'none';
+                    }
+                });
+            });
+
+            addProdukClosingField.addEventListener('click', function () {
+                var fieldDiv = document.createElement('div');
+                fieldDiv.innerHTML = `
+                    <div class="input-group mb-3">
+                        <select class="form-control">
+                            <!-- Options for product names -->
+                        </select>
+                        <input type="text" class="form-control" placeholder="No Rekening/Kode Closing">
+                        <button class="btn btn-danger" type="button">-</button>
+                    </div>
+                `;
+                fieldDiv.querySelector('.btn-danger').addEventListener('click', function () {
+                    this.parentElement.parentElement.remove();
+                });
+                document.getElementById('produkClosingFields').appendChild(fieldDiv);
+            });
+        });
+
+
+        </script>
     </body>
 </html>
