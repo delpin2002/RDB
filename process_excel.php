@@ -10,6 +10,7 @@ if (!$connection) {
 
 function generateNewCode($lastCode, $connection, $nppInputter, $namaInputter) {
     // Change the date format to ddmmyy
+    date_default_timezone_set('Asia/Jakarta');
     $today = date('dmy');
 
     // Check if the last code was generated today

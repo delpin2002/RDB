@@ -135,7 +135,9 @@ $sql_update->execute();
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">RDB</a>
+            <a href="welcome.php">
+                <img src="assets\image\BNI.png" alt="BNI" style="width:150px;height:50px;">
+            </a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -233,10 +235,11 @@ $sql_update->execute();
                         <!-- Main Content -->
                         <div id="main-content mt-10">
                             <div class="container">
-                                <h2>Welcome <?php echo $_SESSION['nama_lengkap']; ?></h2>
+                                <h2>SELAMAT DATANG, <?php echo $_SESSION['nama_lengkap']; ?>!</h2>
                                 <p>NPP: <?php echo $_SESSION['npp']; ?></p>
                                 <p>Job Code: <?php echo $_SESSION['kode_job']; ?></p>
                                 <p>Email: <?php echo $_SESSION['email']; ?></p>
+                                <img src="assets\image\BNI.png" alt="BNI" style="width:150px;height:50px;">
                             </div>
                         </div>
                 </main>

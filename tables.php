@@ -35,7 +35,9 @@ $sql_update->execute();
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">RDB</a>
+            <a href="welcome.php">
+                <img src="assets\image\BNI.png" alt="BNI" style="width:150px;height:50px;">
+            </a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -53,7 +55,7 @@ $sql_update->execute();
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -174,9 +176,7 @@ $sql_update->execute();
                                             <td>' . $row["NPP_INPUTTER"] . '</td>
                                             <td>' . $row["TIME_INPUTTER"] . '</td>
                                             <td>
-                                            <a href="edit.php?id=' . $row["CODE_LEADS"] . '" class="btn btn-primary btn-sm">Action</a> <!-- Tombol Edit -->
-                                            <!-- <a href="delete.php?id=' . $row["CODE_LEADS"] . '" class="btn btn-danger btn-sm">Delete</a> Tombol Delete -->
-                                            </td>
+                                            <a href="edit.php?id=' . $row["CODE_LEADS"] . '" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#actionModal">Action</a> <!-- Tombol Edit -->                                            </td>
                                         </tr>';
                                 }
                                 echo '</tbody>
@@ -192,7 +192,30 @@ $sql_update->execute();
                             </div>
                         </div>
 
-                        
+                        <!-- Modal Pop-up -->
+                        <div class="modal fade" id="actionModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel">Default Modal</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Tanggal Follow Up: <br>
+                                Jenis Follow Up: <br>
+                                Hasil Follow Up: <br>
+                                Closing: <br>
+                                Resume: <br>
+                                Produk Closing: <br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

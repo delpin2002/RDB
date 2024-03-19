@@ -58,6 +58,7 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
     login($tks_npp, $tks_pass, $dbh);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -70,6 +71,7 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
+    
     <body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
