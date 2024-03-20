@@ -72,16 +72,35 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
 
+    <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
+        <source src="assets/video/videoplayback.webm" type="video/mp4">
+    </video>
+
+
         <style> 
-                body {
+                /* body {
                 background-image: url('assets/image/BGBNI.jpg');
                 background-size: cover; 
                 background-repeat: no-repeat; 
                 background-attachment: fixed; 
                 background-size: cover;
                 background-position: center;
+                } */
+
+                #background-video {
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: -1;
                 }
         </style>
+
+    
     
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -91,15 +110,18 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header">
+                                        <!-- <h3 class="text-center font-weight-light my-4">Login</h3> -->
+                                        <img src="assets\image\BNI.png" alt="BNI" style="width:150px;height:50px;">
+                                    </div>
                                     <div class="card-body">
                                         <form method="POST" action="index.php">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputNPP" type="text" name="tks_npp" placeholder="insert your npp!" />
+                                                <input class="form-control" id="inputNPP" type="text" name="tks_npp" placeholder="insert your npp!" required/>
                                                 <label for="inputEmail">NPP</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" name="tks_pass" placeholder="Password" />
+                                                <input class="form-control" id="inputPassword" type="password" name="tks_pass" placeholder="Password" required/>
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
@@ -109,6 +131,7 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <!-- <div class="small"><a href="register.html">Need an account? Sign up!</a></div> -->
+                                        <div color="red">⚠️ UNDER DEVELOPMENT ⚠️</div>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +143,7 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
                 <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2024</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

@@ -224,7 +224,7 @@ $sql_update->execute();
                             </a> -->
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
+                    <div class="py-1 sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
                         <?php echo $_SESSION['nama_lengkap']; ?>
                     </div>
@@ -242,10 +242,10 @@ $sql_update->execute();
                             </div>
                         </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2024</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

@@ -81,7 +81,7 @@ $sql_update->execute();
                             </div>
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
+                    <div class="py-1 sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
                         <?php echo $_SESSION['nama_lengkap']; ?>
                     </div>
@@ -90,8 +90,8 @@ $sql_update->execute();
             <div id="layoutSidenav_content">
                 <main>
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-8">
+                    <div class="row justify-content-center align-items-center" style="height: 75vh;">
+                        <div class="col-6">
                             <div class="card">
                                 <div class="card-body mt-20">
                                     <h1>Input</h1>
@@ -118,10 +118,10 @@ $sql_update->execute();
                     </div>
                 </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid px-2">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2024</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
