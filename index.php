@@ -3,7 +3,7 @@ include("engine/connection.php");
 
 session_start();
 if(isset($_SESSION['npp'])) {
-    header("Location: calculator.php");
+    header("Location: welcome.php");
     exit();
 }
 
@@ -39,7 +39,7 @@ function login($tks_npp, $tks_pass, $dbh) {
                 $_SESSION['nama_lengkap']  = $takis['tks_nama_lengkap'];
                 $_SESSION['email']         = $takis['tks_email'];
 
-                header("Location: calculator.php");
+                header("Location: welcome.php");
                 exit();
             } else {
                 $_SESSION['err'] = 1;
