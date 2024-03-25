@@ -136,7 +136,7 @@ $sql_update->execute();
                                         <th>Name Inputter</th>
                                         <th>NPP Inputter</th>
                                         <th>Time Inputter</th>
-                                        <th>Action</th>
+                                        <th>Action</th> 16 = 17
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -275,6 +275,7 @@ $sql_update->execute();
                     {"data": '13'},
                     {"data": '14'},
                     {"data": '15'},
+                    {"data": '16'},
                 ]
             });
         });

@@ -59,7 +59,7 @@ $columns = array(
 
     array(
         'db'        => 'ID_LEADS',
-        'dt'        => 15,
+        'dt'        => 16,
         'formatter' => function( $d, $row ) {
             return '<a href="edit.php?id=' . $row["ID_LEADS"] . '" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#actionModal">Action</a>';
         }
