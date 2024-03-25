@@ -1,16 +1,13 @@
 <?php
-// Koneksi ke database
 include("engine/connection.php");
 require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-// Membuat objek spreadsheet
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-// Mengatur judul kolom
 $sheet->setCellValue('A1', 'Code Leads');
 $sheet->setCellValue('B1', 'Nama Leads');
 $sheet->setCellValue('C1', 'Nama Calon Nasabah');
@@ -25,14 +22,11 @@ $sheet->setCellValue('K1', 'Cabang');
 $sheet->setCellValue('L1', 'Outlet');
 $sheet->setCellValue('M1', 'Name Inputter');
 $sheet->setCellValue('N1', 'Time Inputter');
-// Tambahkan judul kolom lainnya sesuai kebutuhan
 
-// Query untuk mengambil data
 $sql = "SELECT * FROM leads_tbl";
 $result = mysqli_query($connection, $sql);
-$rowNum = 2; // Mulai dari baris kedua karena baris pertama untuk header
+$rowNum = 2; 
 
-// Loop untuk mengisi spreadsheet dengan data
 while ($row = mysqli_fetch_assoc($result)) {
     $sheet->setCellValue('A' . $rowNum, $row['CODE_LEADS']);
     $sheet->setCellValue('B' . $rowNum, $row['NAMA_LEADS']);
@@ -48,16 +42,13 @@ while ($row = mysqli_fetch_assoc($result)) {
     $sheet->setCellValue('L' . $rowNum, $row['OUTLET']);
     $sheet->setCellValue('M' . $rowNum, $row['NAME_INPUTTER']);
     $sheet->setCellValue('N' . $rowNum, $row['TIME_INPUTTER']);
-    // Set nilai sel lainnya berdasarkan data Anda
     $rowNum++;
 }
 
-// Tentukan header untuk download
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="DataLeads.xlsx"');
 header('Cache-Control: max-age=0');
 
-// Menulis file Excel dan melakukan download
 $writer = new Xlsx($spreadsheet);
 $writer->save('php://output');
 exit;

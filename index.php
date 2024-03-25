@@ -37,6 +37,10 @@ function login($tks_npp, $tks_pass, $dbh) {
                 $_SESSION['npp']           = $takis['tks_npp'];
                 $_SESSION['kode_job']      = $takis['tks_kode_job'];
                 $_SESSION['nama_lengkap']  = $takis['tks_nama_lengkap'];
+                $_SESSION['nama_panggilan']  = $takis['tks_panggilan'];
+                $_SESSION['cabang']  = $takis['tks_cab'];
+                $_SESSION['outlet']  = $takis['tks_out'];
+                $_SESSION['no_telp']  = $takis['tks_notelp'];
                 $_SESSION['email']         = $takis['tks_email'];
 
                 header("Location: welcome.php");
@@ -62,7 +66,7 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -111,7 +115,6 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
-                                        <!-- <h3 class="text-center font-weight-light my-4">Login</h3> -->
                                         <img src="assets\image\BNI.png" alt="BNI" style="width:150px;height:50px;">
                                     </div>
                                     <div class="card-body">
@@ -130,8 +133,10 @@ if(isset($_POST['tks_npp']) && isset($_POST['tks_pass'])) {
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <!-- <div class="small"><a href="register.html">Need an account? Sign up!</a></div> -->
-                                        <div color="red">⚠️ UNDER DEVELOPMENT ⚠️</div>
+                                        <div class="small">
+                                            <a href="register.php">Sign up</a> |
+                                            <a href="password.html">Forgot Password</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
